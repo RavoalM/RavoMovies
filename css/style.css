@@ -883,58 +883,131 @@ section.active {
 }
 
 /* ============ AJUSTE DE RESPONSIVIDADE ============ */
-@media (max-width: 768px) {
-  nav {
-    gap: 1rem;
-  }
-  
-  nav button {
-    font-size: 1rem;
-  }
-  
-  .profiles-list {
-    gap: 1.5rem;
-  }
-  
-  .profile-card {
-    width: 140px;
-    height: 190px;
-  }
-  
-  .movie-card {
-    width: 150px;
-    min-width: 150px;
-  }
-  
-  .movie-poster {
-    height: 200px;
-  }
-}
 
 @media (max-width: 480px) {
-  main {
-    padding: 1rem;
+  #btn-add-profile {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(255, 60, 60, 0.4);
+    margin: 0;
   }
-  
-  #profile-selection h1 {
-    font-size: 2rem;
+
+  .movie-section {
+    padding: 12px 10px;
+    margin-bottom: 20px;
+    background: #1a1a1a;
+    border: 1px solid #333;
   }
-  
-  .profile-card {
-    width: 120px;
-    height: 170px;
+
+  .section-header {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
   }
-  
-  .profile-name {
+
+  .section-header h2 {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+  }
+
+  .movies-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    overflow-x: hidden;
+    padding: 5px 0;
+  }
+
+  .movie-card {
+    width: 100%;
+    margin: 0;
+  }
+
+  .section-actions {
+    display: flex;
+    gap: 6px;
+    margin-left: auto;
+  }
+
+  .btn-section-edit, 
+  .btn-section-delete {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+
+  .section-actions .btn.subtle-btn {
+    display: none; /* Oculta o texto no mobile */
+  }
+
+  /* Mostra apenas ícone no mobile */
+  .section-actions .btn.subtle-btn::before {
+    content: "+";
+    font-size: 1.2rem;
+  }
+
+  /* Corrige o header */
+  header {
+    padding: 10px 15px;
+  }
+
+  /* Ajusta navegação */
+  nav {
+    gap: 10px;
+  }
+
+  nav button {
+    font-size: 0.9rem;
+    padding: 5px 0;
+  }
+
+  /* Melhora os modais */
+  #modal-content {
+    width: 95%;
+    max-height: 85vh;
+    padding: 20px 15px;
+  }
+
+  /* Ajuste específico para os forms */
+  .form-group input, 
+  .form-group textarea {
+    padding: 12px 10px;
     font-size: 1rem;
   }
-  
-  .button-group {
-    flex-direction: column;
-    gap: 0.8rem;
+
+  .netflix-expanded-details {
+    overflow-y: auto;
   }
-  
-  .btn {
-    width: 100%;
+
+  .expanded-backdrop {
+    height: 40vh;
+    min-height: 250px;
+  }
+
+  .expanded-content {
+    padding: 1rem;
+  }
+
+  .movie-actions-row .btn {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .edit-movie-form {
+    padding: 15px 10px;
   }
 }
