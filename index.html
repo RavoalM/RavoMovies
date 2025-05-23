@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<style>
+    /* Garante que o body não tenha scroll quando o modal estiver aberto */
+    body.modal-open {
+        overflow: hidden;
+    }
+    
+    /* Adiciona overlay quando modal está aberto */
+    body.modal-open::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 999;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RavoMovies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/icon.png">
+</head>
+
+<body>
+     <!-- Nav Bar -->
+    <header>
+        <nav>
+            <button id="nav-profiles" class="active" aria-label="Profile selection">Perfis</button>
+            <button id="nav-movies" aria-label="Movies screen" disabled>Filmes</button>
+    </header>
+    <main>
+        <!-- Tela de Perfis -->
+        <section id="profile-selection">
+            <h1>Escolha Seu Perfil</h1>
+            <div class="profiles-list" id="profiles-list"></div>
+            <div class="button-group">
+                <button class="btn" id="btn-add-profile">+ Adicionar Perfil</button>
+                <div class="dropdown">
+                    <button class="btn" id="btn-manage-profile">Gerenciar Perfil ▾</button>
+                    <div class="dropdown-menu hidden">
+                        <button id="btn-edit-profile">Editar Perfil</button>
+                        <button id="btn-delete-profile">Excluir Perfil</button>
+                        <button id="btn-cancel-action">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Tela de Filmes -->
+        <section id="movies-screen">
+            <div class="section-header">
+                <h2>Suas Seções de Filmes</h2>
+                <button class="btn" id="btn-add-section">+ Adicionar Seção</button>
+            </div>
+            <div id="sections-container"></div>
+        </section>
+    </main>
+
+    <div id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div id="modal-content">
+            <button id="modal-close" aria-label="Close modal">&times;</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

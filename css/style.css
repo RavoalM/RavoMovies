@@ -1,0 +1,940 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* ============ BASE STYLES ============ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0d0d0d;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+}
+
+/* ============ HEADER E NAVEGAÇÃO ============ */
+header {
+  background-color: #1a1a1a;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid #990000;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+nav button {
+  color: #ccc;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+nav button:hover,
+nav button.active {
+  color: #ff3c3c;
+  border-color: #ff3c3c;
+}
+
+nav button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============ MAIN ============ */
+main {
+  flex-grow: 1;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0c0c0c 100%);
+}
+
+section {
+  display: none;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+section.active {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ============ SEÇÂO DE PERFIS ============ */
+#profile-selection {
+  align-items: center;
+  text-align: center;
+}
+
+#profile-selection h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ff3c3c;
+  text-shadow: 0 0 10px rgba(255, 60, 60, 0.5);
+  margin-bottom: 1rem;
+}
+
+.profiles-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.profile-card {
+  background: #222;
+  border-radius: 12px;
+  width: 160px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(255, 60, 60, 0.3);
+}
+
+.profile-card.selected {
+  border: 2px solid #ff3c3c;
+  box-shadow: 0 0 15px rgba(255, 60, 60, 0.7);
+}
+
+.profile-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background: #333;
+}
+
+.profile-name {
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #eee;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.button-group {
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* ============ SEÇÂO DE FILMES ============ */
+#movies-screen .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#movies-screen h2 {
+  color: #ff3c3c;
+  font-size: 1.8rem;
+}
+
+.movie-section {
+  background: #1f1f1f;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.movies-list {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+}
+
+.movie-card {
+  background: #2a2a2a;
+  border-radius: 10px;
+  width: 180px;
+  min-width: 180px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  background: #444;
+}
+
+/* ============ BOTÕES ============ */
+.btn {
+  background: #ff3c3c;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn:hover {
+  background: #ff5757;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 60, 60, 0.3);
+}
+
+.btn.subtle-btn {
+  background: transparent;
+  color: #ff3c3c;
+  border: 1px solid #ff3c3c;
+  padding: 0.4rem 0.8rem;
+}
+
+.btn.subtle-btn:hover {
+  background: rgba(255, 60, 60, 0.1);
+}
+
+.expand-btn {
+  background: none;
+  border: none;
+  color: #ff3c3c;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* ============ MODAL STYLES ============ */
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+#modal[aria-hidden="false"] {
+  display: flex;
+}
+
+#modal-content {
+  background: #1a1a1a;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  box-shadow: 0 0 25px rgba(255, 60, 60, 0.5);
+  position: relative;
+}
+
+#modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#modal-close:hover {
+  color: #ff3c3c;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modal-form h2 {
+  color: #ff3c3c;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.profile-form,
+#add-movie-form,
+#edit-movie-form,
+#add-section-form,
+#edit-section-form {
+  padding: 2rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select,
+.profile-form input,
+#add-movie-form input,
+#edit-movie-form input,
+#add-section-form input,
+#edit-section-form input {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #ff3c3c;
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 60, 60, 0.3);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #ddd;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.file-input-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.file-input-wrapper input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #ff3c3c;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.file-btn:hover {
+  background: #ff5757;
+}
+
+.file-name {
+  margin-top: 0.5rem;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+/* ============ BOTÕES DE EDIÇÃO NO MODAL NETFLIX ============ */
+.movie-actions-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.movie-actions-row .btn {
+  flex: 1;
+}
+
+.edit-details-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.edit-details-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.delete-movie-btn {
+  background: rgba(255, 60, 60, 0.2);
+  color: #ff3c3c;
+  border: 1px solid #ff3c3c;
+}
+
+.delete-movie-btn:hover {
+  background: rgba(255, 60, 60, 0.3);
+}
+
+/* ============ FORMULÁRIO DE EDIÇÃO ============ */
+.edit-movie-form {
+  display: none;
+  margin-top: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.edit-movie-form.active {
+  display: block;
+}
+
+.edit-form-group {
+  margin-bottom: 1rem;
+}
+
+.edit-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #ddd;
+}
+
+.edit-form-group input,
+.edit-form-group textarea,
+.edit-form-group select {
+  width: 100%;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.edit-form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.form-actions .btn {
+  flex: 1;
+}
+
+.cancel-edit-btn {
+  background: rgba(255, 255, 255, 0.1);
+ color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.cancel-edit-btn:hover {
+  background: rgba(255, 255, 255, 0.205);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(248, 167, 167, 0.3);
+}
+
+/* ============ POSTER ============ */
+.poster-optional {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.poster-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.poster-upload input[type="file"] {
+  display: none;
+}
+
+.poster-upload .file-btn {
+ background: #ff3c3c;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.poster-upload .file-btn:hover {
+  background: #ff5757;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 60, 60, 0.3);
+}
+
+.poster-note {
+  color: #aaa;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+
+.poster-optional small {
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+/* ============ ATUALIZAÇÃO DE POSTER NO EDITAR ============ */
+.update-poster-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px dashed #aaa;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.update-poster-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ff3c3c;
+}
+
+/* ============ DROPDOWN ============ */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 0.5rem;
+  min-width: 200px;
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dropdown-menu button:hover {
+  background-color: #ff3c3c;
+  border-radius: 4px;
+}
+
+/* ============ ESTILO NETFLIX PARA FILMES ============ */
+.movie-card {
+  position: relative;
+  width: 180px;
+  min-width: 180px;
+  margin-right: 15px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.movie-poster-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.movie-hover-actions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.movie-card:hover .movie-hover-actions {
+  opacity: 1;
+}
+
+.movie-card:hover .movie-poster {
+  transform: scale(1.05);
+}
+
+.movie-title {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============ MODAL ESTILO NETFLIX ============ */
+.netflix-expanded-details {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  animation: fadeIn 0.3s ease;
+  overflow-y: auto;
+}
+
+.expanded-backdrop {
+  height: 60vh;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.expanded-backdrop::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, #0d0d0d 0%, transparent 100%);
+}
+
+.rating-select {
+    width: 100%;
+    padding: 10px 15px;
+    margin-top: 8px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    appearance: none; /* Remove o estilo padrão do navegador */
+    background-image: 
+        linear-gradient(45deg, transparent 50%, #fff 50%),
+        linear-gradient(135deg, #fff 50%, transparent 50%);
+    background-position:
+        calc(100% - 20px) center,
+        calc(100% - 15px) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease;
+}
+
+.rating-select:hover {
+    background-color: #444;
+    border-color: #777;
+}
+
+/* Estilo para as opções */
+.rating-select option {
+    background-color: #222;
+    color: #fff;
+    padding: 10px;
+}
+
+.expanded-content {
+  background: #0d0d0d;
+  padding: 2rem 5%;
+  position: relative;
+  margin-top: -100px;
+}
+
+.close-expanded {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.close-expanded:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.expanded-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.expanded-content h2 span {
+  color: #aaa;
+  font-weight: 300;
+}
+
+.movie-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  color: #46d369;
+  font-weight: 500;
+  align-items: center;
+}
+
+.movie-meta span {
+  position: relative;
+}
+
+.movie-meta span:not(:last-child)::after {
+  content: '•';
+  margin-left: 1rem;
+  color: #777;
+}
+
+.action-buttons .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.action-buttons .play-btn {
+  background: #fff;
+  color: #000;
+}
+
+.action-buttons .play-btn:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.action-buttons .add-to-list {
+  background: rgba(109, 109, 110, 0.7);
+  color: white;
+}
+
+.action-buttons .add-to-list:hover {
+  background: rgba(109, 109, 110, 0.5);
+}
+
+.synopsis {
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+
+.synopsis h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.synopsis p {
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.additional-info {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.info-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.info-column p {
+  margin-bottom: 0.8rem;
+  color: #ddd;
+}
+
+.info-column strong {
+  color: #777;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff3c3c;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff5757;
+}
+
+/* ============ AJUSTE DE RESPONSIVIDADE ============ */
+@media (max-width: 768px) {
+  nav {
+    gap: 1rem;
+  }
+  
+  nav button {
+    font-size: 1rem;
+  }
+  
+  .profiles-list {
+    gap: 1.5rem;
+  }
+  
+  .profile-card {
+    width: 140px;
+    height: 190px;
+  }
+  
+  .movie-card {
+    width: 150px;
+    min-width: 150px;
+  }
+  
+  .movie-poster {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 1rem;
+  }
+  
+  #profile-selection h1 {
+    font-size: 2rem;
+  }
+  
+  .profile-card {
+    width: 120px;
+    height: 170px;
+  }
+  
+  .profile-name {
+    font-size: 1rem;
+  }
+  
+  .button-group {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+}
