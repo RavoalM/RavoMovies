@@ -830,7 +830,7 @@
             title,
             genre,
             year,
-            poster: poster || 'assets/posterPlaceHolder.jpg', // Imagem padrão
+            poster: poster || 'assets/posterPlaceHolder.jpg', 
             details: {
                 cast: [],
                 director: '',
