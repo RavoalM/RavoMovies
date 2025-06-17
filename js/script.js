@@ -126,18 +126,17 @@
     // GERENCIAMENTO DE PERFIS
     // =============================================
     const renderProfiles = () => {
-        elements.profilesListEl.innerHTML = data.profiles.length
-            ? data.profiles.map(profile => `
-                <div class="profile-card" data-profile-id="${profile.id}">
-                    ${profile.image ? `<img src="${profile.image}" alt="${profile.name}">` : ''}
-                    <div class="profile-name">${profile.name}</div>
-                </div>
-            `).join('')
-            : '<p style="color:#bbb;font-style:italic;">Nenhum perfil. Por favor, adicione um perfil para começar.</p>';
+    elements.profilesListEl.innerHTML = data.profiles.length
+        ? data.profiles.map(profile => `
+            <div class="profile-card" data-profile-id="${profile.id}">
+                <img src="${profile.image || 'assets/userPlaceHolder.jpg'}" alt="${profile.name}" class="profile-image">
+                <div class="profile-name">${profile.name}</div>
+            </div>
+        `).join('')
+        : '<p style="color:#bbb;font-style:italic;">Nenhum perfil. Por favor, adicione um perfil para começar.</p>';
 
-        addProfileClickListener();
-    };
-
+    addProfileClickListener();
+};
     const addProfileClickListener = () => {
         const profileCards = document.querySelectorAll('.profile-card');
 
@@ -229,18 +228,18 @@
             reader.readAsDataURL(file);
         }
         // Processa sem imagem
-        else {
-            data.profiles.push({
-                id: generateId(),
-                name: nameVal,
-                image: null,
-                sections: []
-            });
-            saveData();
-            renderProfiles();
-            closeModal();
-        }
-    };
+       else {
+        data.profiles.push({
+            id: generateId(),
+            name: nameVal,
+            image: 'assets/userPlaceHolder.jpg', 
+            sections: []
+        });
+        saveData();
+        renderProfiles();
+        closeModal();
+        };
+    }
 
     // FORMULÁRIOS DE PERFIL (EDITAR)
     const showEditProfileForm = (profileId) => {
